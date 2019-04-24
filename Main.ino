@@ -3,7 +3,7 @@
 HallSensor sensor = HallSensor(25);
 
 void IRAM_ATTR ISR() {
-    Serial.println("FJDHSFLDJSFKJDSLFJDSLFJSDLKFJSLFJSDKFDSKFL");
+    sensor.update();
 }
 
 void setup() {

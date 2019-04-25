@@ -12,6 +12,7 @@ class HallSensor {
         int getPin();
         int getState();
         float getRPM();
+        float signalMotor();
         void attachCallback(void (*callback_function)());
 
     private:
@@ -19,6 +20,7 @@ class HallSensor {
         int state;
         int input_pin;
         int current_time;
+        float motorSignal;
 };
 
 #endif

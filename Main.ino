@@ -12,5 +12,5 @@ void setup() {
 }
 
 void loop() {
-    Serial.println(sensor.getRPM());
+    sensor.signalMotor(); // Doing this to help bind to interpolation
 }

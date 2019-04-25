@@ -2,7 +2,7 @@
 Firmware for ESP32 E-bike controller
 
 ## HallSensor.h
-Usage: 
+Usage for the HallSensor library: 
 ```c++
 #include "HallSensor.h"
 

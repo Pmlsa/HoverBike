@@ -13,5 +13,5 @@ void setup() {
 }
 
 void loop() {
-    interpolate.signalMotor( sensor.defineRPMs() ); // Doing this to help bind to interpolation
+    Interpolate.signalMotor( sensor.defineRPMs() ); // Doing this to help bind to interpolation
 }

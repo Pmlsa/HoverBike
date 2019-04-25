@@ -34,3 +34,22 @@ int HallSensor::getPin() {
 int HallSensor::getState() {
     return state;
 }
+
+void HallSensor::defineRPMs() {
+    
+    float ThirdRPM = PreviousRPM;
+    float PreviousRPM = CurrentRPM;
+    float CurrentRPM = sensor.getRPM();
+    
+    float definedRPMs[ 3 ]
+        
+    definedRPMs[0] = ThirdRPM
+    definedRPMs[1] = PreviousRPM
+    definedRPMs[2] = CurrentRPM
+        
+    if abs(CurrentRPM - PreviousRPM) > 20 {
+        int adjustSpeed = 1
+    }
+    
+    return definedRPMs
+}

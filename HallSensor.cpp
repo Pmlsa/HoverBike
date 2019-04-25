@@ -1,5 +1,6 @@
 #include <Arduino.h>
 #include "HallSensor.h" 
+#include <math.h>
 
 #define OK 0
 #define ERROR 1
@@ -41,14 +42,14 @@ void HallSensor::defineRPMs() {
     float PreviousRPM = CurrentRPM;
     float CurrentRPM = sensor.getRPM();
     
-    float definedRPMs[ 3 ]
+    float definedRPMs[ 3 ];
         
-    definedRPMs[0] = ThirdRPM
-    definedRPMs[1] = PreviousRPM
-    definedRPMs[2] = CurrentRPM
+    definedRPMs[0] = ThirdRPM;
+    definedRPMs[1] = PreviousRPM;
+    definedRPMs[2] = CurrentRPM;
         
     if abs(CurrentRPM - PreviousRPM) > 20 {
-        int adjustSpeed = 1
+        int adjustSpeed = 1;
     }
     
     return definedRPMs

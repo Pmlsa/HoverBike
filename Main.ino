@@ -3,10 +3,10 @@
 
 HallSensor sensor = HallSensor(25);
 
-int adjustSpeed = 0
+int adjustSpeed = 0;
     
-float PreviousRPM = 0.0
-float CurrentRPM = 0.0
+float PreviousRPM = 0.0;
+float CurrentRPM = 0.0;
 
 void IRAM_ATTR ISR() {
     sensor.update();

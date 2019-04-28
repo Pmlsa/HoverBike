@@ -3,11 +3,6 @@
 
 HallSensor sensor = HallSensor(25);
 
-int adjustSpeed = 0;
-    
-float PreviousRPM = 0.0;
-float CurrentRPM = 0.0;
-
 void IRAM_ATTR ISR() {
     sensor.update();
 }
@@ -18,5 +13,6 @@ void setup() {
 }
 
 void loop() {
-    Interpolate.signalMotor( sensor.defineRPMs() ); // Doing this to help bind to interpolation
+    if sensor.getAdjustSpeed
+    Interpolate.signalMotor( sensor.getRPMs() ); // Doing this to help bind to interpolation
 }

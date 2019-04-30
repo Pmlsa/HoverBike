@@ -8,18 +8,54 @@
 HallSensor sensor = HallSensor(25);
 
 float Interpolate::GetInterpolation (float definedRPMs) {
-    if sensor.getInterpolateState() == 1 {
-        
-    }
+    float targetRPM = definedRPMs[0], prevRPM = definedRPMs[0];
+    float rateOfChange = (speedFunction(TargetRPM) - speedFunction(currentRPM))/(TargetRPM - currentRPM);
+    return rateOfChange;
 }
 
-int checkSpeedDifference () {
-    float currentRPM, prevRPM = sensor.getRPMs()
-    if abs(currentRPM - prevRPM) > 20 {
-        sensor.setInterpolateState(1)
+float Interpolate::signalMotor (float definedRPMs) {
+    float targetRPM = definedRPMs[0], prevRPM = definedRPMs[0];
+
+    if hasInterpolationStarted() == false {
+        setStepper(GetInterpolation, definedRPMS);
+        setIterator(5);
+        setStartInterpolation(true);
     }
-    else {
-        sensor.setInterpolateState(0)
+
+    MotorController.write(speedFunction+((5-Iterator)*stepper*GetInterpolation(definedRPMs));
+    setIterator(getIterator() - 1);
+
+    if getIteration() == 0 {
+        setStartInterpolation(false);
     }
-    return adjustSpeed
+
+}
+
+float Interpolate::speedFunction( float inputSpeed) {
+    float outputVoltage = 10 * tanh( inputSpeed ) + 10;
+    return outputVoltage;
+}
+
+int Interpolate::getStepper() {
+    return stepper;
+}
+
+void Interpolate::setStepper(float rateOfChange, float definedRPMs) {
+    float RPMDifference = float(definedRPMs[0]) - float(definedRPMs[0]);
+    float stepper = RPMDifference*rateOfChange/5;
+    return stepper;
+}
+
+bool Interpolate::hasInterpolationStarted() {
+    return startInterpolation;
+}
+void Interpolate::setStartInterpolation(bool inputBool) {
+    startInterpolation = inputBool;
+}
+
+int Interpolate::getIteration() {
+    return Iteration;
+}
+void Interpolate::setIterator(int inputInt) {
+    Iteration = inputInt;
 }

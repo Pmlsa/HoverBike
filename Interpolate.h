@@ -6,13 +6,25 @@ class Interpolate {
     
     public:
     
-        void GetInterpolation(float RPM);
-        int checkSpeedDifference(float RPM);
+        void GetInterpolation(float RPMList);
+        void signalMotor(float RPMList);
+        float speedFunction(float inputSpeed);
+    
+        float getStepper();
+        void setStepper(float definedRPMs);
+    
+        bool hasInterpolationStarted();
+        void setStartInterpolation(bool inputBool);
+    
+        void setIterator(int inputInt);
+        int getIteration();
 
     private:
 
-        float outputSpeed;
-        int speedBool;
+        float outputVoltage;
+        int stepper;
+        bool startInterpolation;
+        int Iteration;
 };
 
 #endif

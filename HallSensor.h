@@ -1,31 +1,3 @@
-/*#ifndef HallSensor_h
-#define HallSensor_h
-
-#include <Arduino.h>
-
-class HallSensor {
-    
-    public:
-        HallSensor(int INPUT_PIN);
-
-        int update();
-        int getPin();
-        int getState();
-        float getRPM();
-        void defineRPMs();
-        void attachCallback(void (*callback_function)());
-
-    private:
-        float rpm;
-        int state;
-        int input_pin;
-        int current_time;
-        float motorSignal;
-        float definedRPMs[ 3 ];
-};*/
-
-#endif
-
 #ifndef HallSensor_h
 #define HallSensor_h
 
@@ -34,24 +6,19 @@ class HallSensor {
 class HallSensor {
     
     public:
-        HallSensor(int INPUT_PIN);
-
+        HallSensor(int INPUT_PIN); 
         int update();
         int getPin();
-        int getState();
         float getRPMs();
-        void defineRPMs();
-        void attachCallback(void (*callback_function)());
 
     private:
-        int interpolateState;
         float prevRPM;
         float currentRPM;
         int inputPin;
         int prevTime;
         int currentTime;
         float motorSignal;
-        float definedRPMs[ 3 ]
+        float definedRPMs[ 2 ];
 };
 
 #endif

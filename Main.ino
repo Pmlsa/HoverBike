@@ -13,6 +13,5 @@ void setup() {
 }
 
 void loop() {
-    if sensor.getAdjustSpeed
     Interpolate.signalMotor( sensor.getRPMs() ); // Doing this to help bind to interpolation
 }

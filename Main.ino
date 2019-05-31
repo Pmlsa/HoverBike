@@ -21,9 +21,11 @@ void loop()
 	char * data = BT.receiveData();
 
 	if (data[0] != NULL) {
-		float percent = atof(data);
-		if (percent < 0.8) {
-			Motor.setPercentSpeed(percent);
+		if (data[0] == '1') { // 0 is for "Off Motor", 1 is for "On Motor"
+			float percent = atof(data);
+			if (percent < 0.8) {
+				Motor.setPercentSpeed(percent); // Add an argument for Data[0] = 2 or 3, or locked/unlocked
+			}
 		}
 	}
 }

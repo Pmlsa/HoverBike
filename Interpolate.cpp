@@ -1,6 +1,7 @@
 #include <math.h>
 #include <Arduino.h>
 #include "HallSensor.h" 
+#include "MotorController.h"
 
 #define OK 0
 #define ERROR 1
@@ -17,7 +18,7 @@ float Interpolate::signalMotor (float definedRPMs) {
         setStartInterpolation(true);
     }
 
-    MotorController.write(speedFunction(currentRPM+((5-Iterator)*stepper*rateOfChange));
+    MotorController.setPercentSpeed(speedFunction(currentRPM+((5-Iterator)*stepper*rateOfChange));
     setIterator(getIterator() - 1);
 
     if getIteration() == 0 {

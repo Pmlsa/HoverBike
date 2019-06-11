@@ -7,14 +7,9 @@
 
 HallSensor sensor = HallSensor(25);
 
-float Interpolate::GetInterpolation (float definedRPMs) {
-    float targetRPM = definedRPMs[0], prevRPM = definedRPMs[0];
-    float rateOfChange = (speedFunction(TargetRPM) - speedFunction(currentRPM))/(TargetRPM - currentRPM);
-    return rateOfChange;
-}
-
 float Interpolate::signalMotor (float definedRPMs) {
     float targetRPM = definedRPMs[0], prevRPM = definedRPMs[0];
+    float rateOfChange = (speedFunction(TargetRPM) - speedFunction(currentRPM))/(TargetRPM - currentRPM);
 
     if hasInterpolationStarted() == false {
         setStepper(GetInterpolation, definedRPMS);
@@ -22,7 +17,7 @@ float Interpolate::signalMotor (float definedRPMs) {
         setStartInterpolation(true);
     }
 
-    MotorController.write(speedFunction+((5-Iterator)*stepper*GetInterpolation(definedRPMs));
+    MotorController.write(speedFunction(currentRPM+((5-Iterator)*stepper*rateOfChange));
     setIterator(getIterator() - 1);
 
     if getIteration() == 0 {
@@ -31,9 +26,9 @@ float Interpolate::signalMotor (float definedRPMs) {
 
 }
 
-float Interpolate::speedFunction( float inputSpeed) {
-    float outputVoltage = 10 * tanh( inputSpeed ) + 10;
-    return outputVoltage;
+float Interpolate::speedFunction(float inputSpeed) {
+    float outputPercent = 450/(4.34+ 50*(e**(-0.0087*(inputSpeed+113.074))));
+    return outputPercent;
 }
 
 int Interpolate::getStepper() {

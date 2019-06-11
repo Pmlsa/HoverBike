@@ -13,7 +13,7 @@ float Interpolate::signalMotor (float definedRPMs) {
     float rateOfChange = (speedFunction(TargetRPM) - speedFunction(currentRPM))/(TargetRPM - currentRPM);
 
     if hasInterpolationStarted() == false {
-        setStepper(GetInterpolation, definedRPMS);
+        setStepper(rateOfChange, definedRPMS);
         setIterator(5);
         setStartInterpolation(true);
     }

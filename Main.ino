@@ -11,6 +11,8 @@ Interpolate IN;
 BluetoothController BT;
 HS = HallSensor(HALL_SENSOR_PIN);
 
+lockState = true;
+
 void setup()
 {
 	Serial.begin(9600);
@@ -23,8 +25,12 @@ void loop()
 	char * data = BT.receiveData();
 
 	if (data[0] != NULL) {
-		if (data[0] == '1') { // 0 is for "Off Motor", 1 is for "On Motor"
+		if (data[0] == '1') || (lockState == false) { // 0 is for "Off Motor", 1 is for "On Motor"
 			IN.signalMotor(HS.getRPMS());
+			lockState = false;
+		}
+		else if (data[0] == '0') || (lockState == true) {
+			lockState = true;
 		}
 	}
 }
